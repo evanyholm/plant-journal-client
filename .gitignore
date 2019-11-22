@@ -1,0 +1,5 @@
+# Idea config folder
+.idea
+
+# google project credentials
+google-serviceaccount.json
