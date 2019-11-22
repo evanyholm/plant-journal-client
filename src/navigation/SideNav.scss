@@ -1,0 +1,9 @@
+@import '../styles/colors.scss';
+
+.container {
+	padding: 20px;
+	display: flex;
+	width: 300px;
+	flex-direction: column;
+	background-color: $gallery;
+}
