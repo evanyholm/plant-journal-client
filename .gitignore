@@ -1,5 +1,11 @@
+node_modules/
+build/
+
 # Idea config folder
-.idea
+.idea/
+
+# Terraform
+.terraform/
 
 # google project credentials
 google-serviceaccount.json
