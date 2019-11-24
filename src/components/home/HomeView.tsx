@@ -5,10 +5,6 @@ import { Plant } from '../../types/plant'
 import { Link } from 'react-router-dom'
 import { useStore } from '../../index'
 
-type OwnProps = {
-  plants: Plant[]
-}
-
 const HomeView = observer(() => {
   const store = useStore()
   return (
