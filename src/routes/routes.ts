@@ -1,6 +1,6 @@
-export const routes = {
-  HomeView: {
+export const routes = [
+  {
     path: '/',
     name: 'HomeView',
   },
-}
+]

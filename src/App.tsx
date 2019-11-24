@@ -4,9 +4,12 @@ import HomeView from './components/home/HomeView'
 import PlantView from './components/plant/PlantView'
 import './index.scss'
 import SideNav from './components/navigation/SideNav'
-import { plants } from './mockdata'
+import { handleRouteParams } from './utlis/util'
+import { useStore } from './index'
+import { initPlants } from './actions/plant'
 
 const App: React.FC = () => {
+  initPlants(useStore())
   return (
     <Router>
       <div className="body">
@@ -14,9 +17,14 @@ const App: React.FC = () => {
           <SideNav />
           <Switch>
             <Route exact path="/">
-              <HomeView plants={plants} />
+              <HomeView />
             </Route>
-            <Route path="/plant:id" children={<PlantView />} />
+            <Route
+              path="/plant:id"
+              render={params => (
+                <PlantView plantId={handleRouteParams(params, 'id')} />
+              )}
+            />
           </Switch>
         </div>
       </div>
