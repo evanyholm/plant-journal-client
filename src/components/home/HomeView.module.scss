@@ -1,0 +1,8 @@
+@import '../../styles/colors';
+
+.container {
+  background-color: $gallery;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

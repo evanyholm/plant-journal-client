@@ -1,0 +1,8 @@
+@import '../../styles/colors';
+
+.container {
+  background-color: $fern;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

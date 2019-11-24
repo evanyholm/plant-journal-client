@@ -1,4 +1,4 @@
-@import '../styles/colors.scss';
+@import '../../styles/colors';
 
 .container {
 	padding: 20px;
@@ -6,4 +6,5 @@
 	width: 300px;
 	flex-direction: column;
 	background-color: $gallery;
+	margin-right: 30px;
 }
