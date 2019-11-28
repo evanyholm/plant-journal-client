@@ -3,7 +3,7 @@ steps:
   args: [ "install" ]
 
 - name: "gcr.io/cloud-builders/npm"
-  -args: [ "run", "build" ]
+  args: [ "run", "build" ]
 
 - name: gcr.io/cloud-builders/gsutil
   args: ["-m", "rsync", "-r", "-c", "-d", "./build", "gs://plant-journal-112.appspot.com"]
