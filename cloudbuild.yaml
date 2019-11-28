@@ -6,4 +6,4 @@ steps:
   args: [ "run", "build" ]
 
 - name: gcr.io/cloud-builders/gsutil
-  args: ["-m", "rsync", "-r", "-c", "-d", "./build", "gs://plant-journal-112.appspot.com"]
+  args: ["-m", "rsync", "-r", "-c", "-d", "./build", "gs://www.plantjournal.net"]
