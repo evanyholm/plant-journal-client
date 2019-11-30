@@ -1,15 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import HomeView from './components/home/HomeView'
-import PlantView from './components/plant/PlantView'
+import HomeView from './modules/home/HomeView'
 import './index.scss'
-import SideNav from './components/navigation/SideNav'
+import SideNav from './modules/navigation/SideNav'
+import { connect } from 'react-redux'
+import { fetchPlants } from './modules/plant/slice'
 import { handleRouteParams } from './utlis/util'
-import { useStore } from './index'
-import { initPlants } from './actions/plant'
+import PlantView from './modules/plant/PlantView'
 
-const App: React.FC = () => {
-  initPlants(useStore())
+type Props = typeof mapDispatchToProps
+const App = ({ fetchPlantsAction }: Props) => {
+  fetchPlantsAction()
   return (
     <Router>
       <div className="body">
@@ -31,5 +32,8 @@ const App: React.FC = () => {
     </Router>
   )
 }
+const mapDispatchToProps = {
+  fetchPlantsAction: fetchPlants,
+}
 
-export default App
+export default connect(null, mapDispatchToProps)(App)

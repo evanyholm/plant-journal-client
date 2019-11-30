@@ -1,21 +1,23 @@
 import React from 'react'
-import { observer } from 'mobx-react-lite'
 import styles from './HomeView.module.scss'
-import { Plant } from '../../types/plant'
 import { Link } from 'react-router-dom'
-import { useStore } from '../../index'
+import { Plant } from '../plant/types'
+import { ReduxState } from '../../store/types'
+import { connect } from 'react-redux'
 
-const HomeView = observer(() => {
-  const store = useStore()
+type StateProps = {
+  plants: Plant[]
+}
+const HomeView = ({ plants }: StateProps) => {
   return (
     <div className={styles.container}>
       <p>HomeView</p>
-      {store.plants.map((plant: Plant) => (
+      {plants.map((plant: Plant) => (
         <ListItem key={plant.id} plant={plant} />
       ))}
     </div>
   )
-})
+}
 
 type ListItemProps = {
   plant: Plant
@@ -28,4 +30,10 @@ const ListItem = ({ plant }: ListItemProps) => {
     </div>
   )
 }
-export default HomeView
+
+const mapStateToProps = (state: ReduxState) => {
+  return {
+    plants: state.plantState.plants,
+  }
+}
+export default connect(mapStateToProps)(HomeView)
