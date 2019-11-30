@@ -1,8 +1,14 @@
+type Image = {
+  id?: number
+  url: string
+  meta: string
+}
+
 export type Plant = {
-  id: string
+  id?: string
   name: string
   content: string
-  dates: Dates[]
+  images: Image[]
 }
 
 type Dates = {

@@ -3,6 +3,10 @@ import { Plant } from './types/plant'
 const createStore = () => {
   return {
     plants: [] as Plant[],
+    error: {
+      message: '',
+      code: 0,
+    },
   }
 }
 

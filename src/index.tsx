@@ -6,11 +6,10 @@ import * as serviceWorker from './serviceWorker'
 import { Store } from './store'
 import { useLocalStore } from 'mobx-react-lite'
 import createStore from './store'
-import { configure } from "mobx"
-
+import { configure } from 'mobx'
 
 configure({
-    enforceActions: 'always'
+  enforceActions: 'always',
 })
 const storeContext = React.createContext<Store | null>(null)
 
@@ -26,6 +25,7 @@ export const useStore = () => {
   }
   return store
 }
+
 ReactDOM.render(
   <StoreProvider>
     <App />
