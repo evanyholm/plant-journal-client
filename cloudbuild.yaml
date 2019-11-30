@@ -1,9 +1,22 @@
 steps:
-- name: "gcr.io/cloud-builders/npm"
-  args: [ "install" ]
+- name: "gcr.io/cloud-builders/yarn"
+  args: ["install"]
 
-- name: "gcr.io/cloud-builders/npm"
-  args: [ "run", "build" ]
+- name: "gcr.io/cloud-builders/yarn"
+  args: ["build"]
 
-- name: gcr.io/cloud-builders/gsutil
-  args: ["-m", "rsync", "-r", "-c", "-d", "./build", "gs://www.plantjournal.net"]
+- name: gcr.io/cloud-builders/git
+  args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/github_evanyholm_plant-journal-api']
+
+- name: "ubuntu"
+  entrypoint: 'mkdir'
+  args: ["github_evanyholm_plant-journal-api/dist"]
+
+- name: "ubuntu"
+  entrypoint: 'cp'
+  args: ["github_evanyholm_plant-journal/build/", "github_evanyholm_plant-journal-api/dist/public"]
+
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+  dir: 'github_evanyholm_plant-journal-api/'
+timeout: "1600s"
