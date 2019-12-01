@@ -14,7 +14,7 @@ steps:
 
 - name: "ubuntu"
   entrypoint: 'mv'
-  args: ["github_evanyholm_plant-journal/build/", "github_evanyholm_plant-journal-api/dist/public"]
+  args: ["build/", "github_evanyholm_plant-journal-api/dist/public"]
 
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
