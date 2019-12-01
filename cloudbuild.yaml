@@ -13,7 +13,7 @@ steps:
   args: ["github_evanyholm_plant-journal-api/dist"]
 
 - name: "ubuntu"
-  entrypoint: 'cp'
+  entrypoint: 'mv'
   args: ["github_evanyholm_plant-journal/build/", "github_evanyholm_plant-journal-api/dist/public"]
 
 - name: "gcr.io/cloud-builders/gcloud"
