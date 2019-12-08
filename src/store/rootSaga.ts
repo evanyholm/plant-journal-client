@@ -1,10 +1,9 @@
-import { fork } from 'redux-saga/effects'
-import { plantSaga } from '../modules/plant/saga'
+import { all } from 'redux-saga/effects'
+import { plantSagas } from '../modules/plant/saga'
+import { apiSagas } from '../services/api/saga'
 
-function startSagas(...sagas: any) {
-  return function* rootSaga() {
-    yield sagas.map((saga: any) => fork(saga))
-  }
+function* startSagas() {
+  yield all([...apiSagas, ...plantSagas])
 }
 
-export default startSagas(plantSaga)
+export default startSagas

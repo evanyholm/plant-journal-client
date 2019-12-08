@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { reducer } from './rootReducer'
 import { ReduxState } from './types'
 import createSagaMiddleware from 'redux-saga'
-import {plantSaga} from "../modules/plant/saga"
+import startSagas from './rootSaga'
 
 const sagaMiddleWare = createSagaMiddleware()
 
@@ -15,5 +15,5 @@ const store = configureStore({
   preloadedState,
 })
 
-sagaMiddleWare.run(plantSaga) // todo use rootSaga
+sagaMiddleWare.run(startSagas)
 export default store
