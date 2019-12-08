@@ -14,7 +14,7 @@ steps:
 
 - name: "ubuntu"
   entrypoint: 'cp'
-  args: ["$REPO_NAME/build/", "${_API_REPOSITORY}/public"]
+  args: ["build/", "${_API_REPOSITORY}/public"]
 
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
