@@ -6,17 +6,17 @@ steps:
   args: ["build"]
 
 - name: gcr.io/cloud-builders/git
-  args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/github_evanyholm_plant-journal-api']
+  args: ['clone', 'https://source.developers.google.com/p/$PROJECT_ID/r/${_API_REPOSITORY}']
 
 - name: "ubuntu"
   entrypoint: 'mkdir'
-  args: ["github_evanyholm_plant-journal-api/dist"]
+  args: ["${_API_REPOSITORY}/dist"]
 
 - name: "ubuntu"
-  entrypoint: 'mv'
-  args: ["build/", "github_evanyholm_plant-journal-api/dist/public"]
+  entrypoint: 'cp'
+  args: ["$REPO_NAME/build/", "${_API_REPOSITORY}/public"]
 
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
-  dir: 'github_evanyholm_plant-journal-api/'
+  dir: '${_API_REPOSITORY}/'
 timeout: "1600s"
