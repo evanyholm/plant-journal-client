@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './PlantView.module.scss'
-import { ReduxState } from '../../store/types'
+import { ReduxState } from '../../store/store'
 import { connect } from 'react-redux'
 
 type OwnProps = {

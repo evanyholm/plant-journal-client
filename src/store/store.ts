@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { reducer } from './rootReducer'
-import { ReduxState } from './types'
 import createSagaMiddleware from 'redux-saga'
 import startSagas from './rootSaga'
 
@@ -14,6 +13,8 @@ const store = configureStore({
   middleware: [sagaMiddleWare],
   preloadedState,
 })
+
+export type ReduxState = ReturnType<typeof reducer>
 
 sagaMiddleWare.run(startSagas)
 export default store

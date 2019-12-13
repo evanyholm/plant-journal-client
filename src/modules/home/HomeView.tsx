@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './HomeView.module.scss'
 import { Link } from 'react-router-dom'
 import { Plant } from '../plant/types'
-import { ReduxState } from '../../store/types'
+import { ReduxState } from '../../store/store'
 import { connect } from 'react-redux'
 
 type StateProps = {
