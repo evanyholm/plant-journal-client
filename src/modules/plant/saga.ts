@@ -1,17 +1,19 @@
-import { takeLatest, put } from 'redux-saga/effects'
+import { takeLatest, put, call } from 'redux-saga/effects'
 import { getType } from '@reduxjs/toolkit'
 import * as action from './slice'
-import * as api from '../../services/api/actions'
-import {receivePlants} from "./slice"
+import { receivePlants } from './slice'
+import { apiAgent } from '../../services/api/apiService'
 
 function* fetchPlants() {
   console.log('fetch')
-  yield put(api.call({
-    url: 'api/plants',
-    action: receivePlants
-  }))
+  try {
+    const plants = yield call(() =>
+      apiAgent.get('api/plants').then(response => response.data)
+    )
+    yield put(receivePlants(plants))
+  } catch (e) {
+    console.log(e)
+  }
 }
 
-export const plantSagas = [
-  takeLatest(getType(action.fetchPlants), fetchPlants)
-]
+export const plantSagas = [takeLatest(getType(action.fetchPlants), fetchPlants)]
