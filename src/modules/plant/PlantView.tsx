@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import styles from './PlantView.module.scss'
 import { ReduxState } from '../../store/store'
-import {connect, useDispatch, useSelector, useStore} from 'react-redux'
+import { connect, useDispatch, useSelector, useStore } from 'react-redux'
 import { addPlant } from '../../store/plant/slice'
 
 type OwnProps = {
   plantId: string
 }
+
 type Props = OwnProps &
   ReturnType<typeof mapStateToProps> &
   typeof dispatchToProps
 
-const PlantView = ({ plantId, plants, addPlant }: Props) => {
+const PlantView = ({ plantId, plants, addPlantAction }: Props) => {
   const plant = plants.find(plant => plant.id === plantId)
 
   const plantToAdd = {
@@ -20,9 +21,10 @@ const PlantView = ({ plantId, plants, addPlant }: Props) => {
     content: 'lolcontent',
     dates: [],
   }
+
   // Dispatch
   const submitPlant = () => {
-    addPlant(plantToAdd)
+    addPlantAction(plantToAdd)
   }
 
   // Get store with hooks
@@ -32,9 +34,9 @@ const PlantView = ({ plantId, plants, addPlant }: Props) => {
   // Yet another way
   const plants3 = useSelector((state: ReduxState) => state.plantState.plants)
 
-  // Use dispatch with hooks
+  // Use dispatch with hookspeof dispatchToProps
   const dispatch = useDispatch()
-  dispatch(addPlant(plantToAdd))
+  // dispatch(addPlantAction(plantToAdd))
 
   return plant ? (
     <div className={styles.container}>
@@ -50,6 +52,6 @@ const mapStateToProps = (state: ReduxState) => ({
 })
 
 const dispatchToProps = {
-  addPlant: addPlant,
+  addPlantAction: addPlant,
 }
-export default connect(mapStateToProps)(PlantView)
+export default connect(mapStateToProps, dispatchToProps)(PlantView)
