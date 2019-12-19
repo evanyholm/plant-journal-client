@@ -12,5 +12,7 @@ export const plantState = createSlice({
 })
 
 const fetchPlants = createAction('plant/fetch_plants')
+const addPlant = createAction<Plant>('plant/add_plant')
 const receivePlants = plantState.actions.receivePlants
-export { fetchPlants, receivePlants }
+
+export { fetchPlants, receivePlants, addPlant }
