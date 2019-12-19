@@ -4,7 +4,7 @@ import HomeView from './modules/home/HomeView'
 import './index.scss'
 import SideNav from './modules/navigation/SideNav'
 import { connect } from 'react-redux'
-import { fetchPlants } from './modules/plant/slice'
+import { fetchPlants } from './store/plant/slice'
 import { handleRouteParams } from './utlis/util'
 import PlantView from './modules/plant/PlantView'
 

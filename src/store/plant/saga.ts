@@ -5,7 +5,6 @@ import { receivePlants } from './slice'
 import { apiAgent } from '../../services/api/apiService'
 
 function* fetchPlants() {
-  console.log('fetch')
   try {
     const plants = yield call(() =>
       apiAgent.get('api/plants').then(response => response.data)

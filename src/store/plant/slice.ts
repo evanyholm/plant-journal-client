@@ -1,5 +1,5 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Plant } from './types'
+import { Plant } from '../../modules/plant/types'
 
 export const plantState = createSlice({
   name: 'plant',
