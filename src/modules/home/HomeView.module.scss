@@ -1,8 +1,12 @@
 @import '../../styles/colors';
 
 .container {
-  background-color: $gallery;
-  display: flex;
+  h1 {
+    text-align: center;
+    color: $bilobaFlower;
+  }
+
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
+  padding: 0 1em;
 }

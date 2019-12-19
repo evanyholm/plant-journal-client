@@ -11,7 +11,7 @@ type StateProps = {
 const HomeView = ({ plants }: StateProps) => {
   return (
     <div className={styles.container}>
-      <p>HomeView</p>
+      <h1>HomeView</h1>
       {plants.map((plant: Plant) => (
         <ListItem key={plant.id} plant={plant} />
       ))}
