@@ -1,48 +1,25 @@
-import React, { useState } from 'react'
-import styles from './PlantView.module.scss'
+import React from 'react'
 import { ReduxState } from '../../store/store'
-import { connect, useDispatch, useSelector, useStore } from 'react-redux'
-import { addPlant } from '../../store/plant/slice'
+import { connect } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
+import { Paper, Typography } from '@material-ui/core'
 
 type OwnProps = {
   plantId: string
 }
 
-type Props = OwnProps &
-  ReturnType<typeof mapStateToProps> &
-  typeof dispatchToProps
+type Props = OwnProps & ReturnType<typeof mapStateToProps>
 
-const PlantView = ({ plantId, plants, addPlantAction }: Props) => {
+const PlantView = ({ plantId, plants }: Props) => {
   const plant = plants.find(plant => plant.id === plantId)
-
-  const plantToAdd = {
-    name: 'lolplant',
-    id: 'lol',
-    content: 'lolcontent',
-    dates: [],
-  }
-
-  // Dispatch
-  const submitPlant = () => {
-    addPlantAction(plantToAdd)
-  }
-
-  // Get store with hooks
-  const store: ReduxState = useStore().getState()
-  const plants2 = store.plantState.plants
-
-  // Yet another way
-  const plants3 = useSelector((state: ReduxState) => state.plantState.plants)
-
-  // Use dispatch with hookspeof dispatchToProps
-  const dispatch = useDispatch()
-  // dispatch(addPlantAction(plantToAdd))
-
+  const classes = styles()
   return plant ? (
-    <div className={styles.container}>
-      <h1>{plant.name}</h1>
-      <p>{plant.content}</p>
-    </div>
+    <Paper className={classes.root}>
+      <Typography variant="h5" component="h3">
+        {plant.name}
+      </Typography>
+      <Typography component="p">{plant.content}</Typography>
+    </Paper>
   ) : (
     <div>No plant?</div>
   )
@@ -51,7 +28,10 @@ const mapStateToProps = (state: ReduxState) => ({
   plants: state.plantState.plants,
 })
 
-const dispatchToProps = {
-  addPlantAction: addPlant,
-}
-export default connect(mapStateToProps, dispatchToProps)(PlantView)
+export default connect(mapStateToProps)(PlantView)
+const styles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3),
+    margin: theme.spacing(3, 0, 0, 0),
+  },
+}))
