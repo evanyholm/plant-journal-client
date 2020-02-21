@@ -9,32 +9,39 @@ import PlantView from './modules/plant/PlantView'
 import TopBar from './modules/navigation/TopBar'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { theme } from './muiTheme'
-import { Container } from '@material-ui/core'
-import AddPlantView from "./modules/plant/AddPlantView"
+import {Container, CssBaseline, Drawer, Hidden, makeStyles, Typography} from '@material-ui/core'
+import AddPlantView from './modules/plant/AddPlantView'
+import SideNav from './modules/navigation/SideNav'
 
 type Props = typeof mapDispatchToProps
 const App = ({ fetchPlantsAction }: Props) => {
   fetchPlantsAction()
+  const classes = useStyles()
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <TopBar />
-        <Container>
-          <Switch>
-            <Route exact path="/">
-              <HomeView />
-            </Route>
-            <Route
-              path="/plant:id"
-              render={params => (
-                <PlantView plantId={handleRouteParams(params, 'id')} />
-              )}
-            />
-            <Route exact path="/addPlant">
-              <AddPlantView />
-            </Route>
-          </Switch>
-        </Container>
+        <CssBaseline />
+        <div className={classes.root}>
+          <TopBar />
+          <SideNav />
+          <div className={classes.toolbar} />
+          <Container className={classes.content}>
+            <Switch>
+              <Route exact path="/">
+                <HomeView />
+              </Route>
+              <Route
+                path="/plant/:id"
+                render={params => (
+                  <PlantView plantId={handleRouteParams(params, 'id')} />
+                )}
+              />
+              <Route exact path="/addPlant">
+                <AddPlantView />
+              </Route>
+            </Switch>
+          </Container>
+        </div>
       </ThemeProvider>
     </Router>
   )
@@ -43,4 +50,14 @@ const mapDispatchToProps = {
   fetchPlantsAction: fetchPlants,
 }
 
+const useStyles = makeStyles(() => ({
+  root: {
+    flex: 1,
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}))
 export default connect(null, mapDispatchToProps)(App)

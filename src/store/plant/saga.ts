@@ -1,8 +1,9 @@
 import { takeLatest, put, call } from 'redux-saga/effects'
 import { getType } from '@reduxjs/toolkit'
-import * as action from './slice'
+import * as plantActions from './slice'
 import { receivePlants } from './slice'
 import { apiAgent } from '../../services/api/apiService'
+import { Plant } from '../../modules/plant/types'
 
 function* fetchPlants() {
   try {
@@ -14,5 +15,19 @@ function* fetchPlants() {
     console.log(e)
   }
 }
-
-export const plantSagas = [takeLatest(getType(action.fetchPlants), fetchPlants)]
+function* addPlant(action: ReturnType<typeof plantActions.addPlant>) {
+  try {
+    const added = yield call(() =>
+      apiAgent
+        .post<Plant>('api/plants', action.payload)
+        .then(response => response.data)
+    )
+    console.log(added)
+  } catch (e) {
+    console.log(e)
+  }
+}
+export const plantSagas = [
+  takeLatest(getType(plantActions.fetchPlants), fetchPlants),
+  takeLatest(getType(plantActions.addPlant), addPlant),
+]

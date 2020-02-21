@@ -32,9 +32,9 @@ export const apiAgent = (function() {
     get<T>(url: string): Promise<Response<T>> {
       return makeRequest(url)
     },
-    // post<T>(url: string, data?: any): Promise<Response<T>> {
-    //   return makeRequest(url, 'POST', data)
-    // },
+    post<T>(url: string, data?: any): Promise<Response<T>> {
+      return makeRequest(url, 'POST', data)
+    },
     // put<T>(url: string, data?: any): Promise<Response<T>> {
     //   return makeRequest(url, 'PUT', data)
     // },

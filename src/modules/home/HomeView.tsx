@@ -3,26 +3,26 @@ import { Link } from 'react-router-dom'
 import { Plant } from '../plant/types'
 import { ReduxState } from '../../store/store'
 import { connect } from 'react-redux'
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from '@material-ui/core'
-import {makeStyles} from "@material-ui/core/styles"
+import { List, ListItem, ListItemText, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 type StateProps = {
   plants: Plant[]
 }
 const HomeView = ({ plants }: StateProps) => {
-    const styles = useStyles()
+  const styles = useStyles()
   return (
-    <div className={styles.root}>
+    <div>
       <Typography variant={'h2'}>Home</Typography>
       <List component={'nav'}>
         {plants.map((plant: Plant) => (
-          <ListItem button component={Link} to={`/plant${plant.id}`}>
-            <ListItemText primary={plant.name}/>
+          <ListItem
+            key={plant.id}
+            button
+            component={Link}
+            to={`/plant/${plant.id}`}
+          >
+            <ListItemText primary={plant.name} />
           </ListItem>
         ))}
       </List>
@@ -37,9 +37,9 @@ const mapStateToProps = (state: ReduxState) => {
 }
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(3),
-        margin: theme.spacing(3, 0, 0, 0),
-    },
+  root: {
+    padding: theme.spacing(3),
+    margin: theme.spacing(3, 0, 0, 0),
+  },
 }))
 export default connect(mapStateToProps)(HomeView)

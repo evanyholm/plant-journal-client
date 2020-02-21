@@ -1,8 +1,10 @@
+import { RawDraftContentBlock } from 'draft-js'
+
 export type Plant = {
-  id: string
+  id?: string
   name: string
-  content: string
-  dates: Dates[]
+  content: string | RawDraftContentBlock[]
+  dates?: Dates[]
 }
 
 type Dates = {
