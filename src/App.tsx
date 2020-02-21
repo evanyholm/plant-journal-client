@@ -24,8 +24,8 @@ const App = ({ fetchPlantsAction }: Props) => {
         <div className={classes.root}>
           <TopBar />
           <SideNav />
-          <div className={classes.toolbar} />
           <Container className={classes.content}>
+            <div className={classes.toolbar} />
             <Switch>
               <Route exact path="/">
                 <HomeView />
@@ -53,6 +53,7 @@ const mapDispatchToProps = {
 const useStyles = makeStyles(() => ({
   root: {
     flex: 1,
+    display: 'flex'
   },
   toolbar: theme.mixins.toolbar,
   content: {

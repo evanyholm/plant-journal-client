@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
     },
     drawer: {
-      width: 700,
+      width: drawerWidth,
       flexShrink: 1,
     },
     drawerPaper: {
