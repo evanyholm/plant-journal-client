@@ -8,8 +8,9 @@ const formatResponse = <T>(data: T, status: number): Response<T> => {
 }
 
 export const apiAgent = (function() {
+  const baseUrl = process.env.REACT_APP_API_BASE_URL
   const makeRequest = <T>(url: string, method = 'GET', data?: any) => {
-    return fetch(url, {
+    return fetch(baseUrl + url, {
       method,
       body: JSON.stringify(data),
       headers: {

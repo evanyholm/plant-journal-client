@@ -13,12 +13,13 @@ type Props = OwnProps & ReturnType<typeof mapStateToProps>
 const PlantView = ({ plantId, plants }: Props) => {
   const plant = plants.find(plant => plant.id === plantId)
   const classes = styles()
+  const content = plant ? plant.content.toString() : 'plant'
   return plant ? (
     <Paper className={classes.root}>
       <Typography variant="h5" component="h3">
         {plant.name}
       </Typography>
-      <Typography component="p">{plant.content}</Typography>
+      <Typography component="p">{content}</Typography>
     </Paper>
   ) : (
     <div>No plant?</div>
