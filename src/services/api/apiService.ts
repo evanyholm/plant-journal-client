@@ -18,8 +18,11 @@ export const apiAgent = (function() {
       },
     })
       .then(response => {
-        if (response.ok && response.status === 200) {
-          return response
+        if (response.ok) {
+          if (response.status === 200 || response.status === 201) {
+            console.log(response)
+            return response
+          }
         }
 
         throw Error(response.statusText)
