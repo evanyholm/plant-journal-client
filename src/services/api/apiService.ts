@@ -7,8 +7,8 @@ const formatResponse = <T>(data: T, status: number): Response<T> => {
   return { data, status }
 }
 
-export const apiAgent = (function() {
-  const baseUrl = process.env.REACT_APP_API_BASE_URL
+export const apiAgent = (() => {
+  const baseUrl = process.env.REACT_APP_API_BASE_URL || ''
   const makeRequest = <T>(url: string, method = 'GET', data?: any) => {
     return fetch(baseUrl + url, {
       method,
@@ -19,7 +19,7 @@ export const apiAgent = (function() {
     })
       .then(response => {
         if (response.ok) {
-          if (response.status === 200 || response.status === 201) {
+          if (response.status === 200 || response.status === 201) {
             console.log(response)
             return response
           }
