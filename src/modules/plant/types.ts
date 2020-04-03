@@ -1,9 +1,9 @@
-import { RawDraftContentBlock } from 'draft-js'
+import { RawDraftContentState } from 'draft-js'
 
 export type Plant = {
   id?: string
   name: string
-  content: string | RawDraftContentBlock[]
+  content: RawDraftContentState
   dates?: Dates[]
 }
 

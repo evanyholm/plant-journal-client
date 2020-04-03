@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { reducer } from './rootReducer'
 import createSagaMiddleware from 'redux-saga'
+import { reducer } from './rootReducer'
 import startSagas from './rootSaga'
+import { Plant } from '../modules/plant/types'
 
 const sagaMiddleWare = createSagaMiddleware()
 
 const preloadedState: ReduxState = {
-  plantState: { plants: [] },
+  plantState: { plants: [] as Plant[] },
 }
 const store = configureStore({
   reducer,
