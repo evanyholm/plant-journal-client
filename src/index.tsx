@@ -4,7 +4,7 @@ import './index.scss'
 import { Provider } from 'react-redux'
 import App from './App'
 
-import store from './store/store'
+import { store } from './store/store'
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(

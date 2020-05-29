@@ -6,4 +6,4 @@ const reducer = combineReducers({
   plantState: plantState.reducer,
 })
 
-export default reducer
+export { reducer }

@@ -11,11 +11,12 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { Editor } from 'react-draft-wysiwyg'
 import { convertToRaw, EditorState } from 'draft-js'
 import { connect, ConnectedProps } from 'react-redux'
-import { addPlant as addPlantAction } from '../../store/plant/slice'
+import { addPlant as addPlantAction, ping } from '../../store/plant/slice'
 import { Plant } from './types'
 
 const mapDispatchToProps = {
   addPlant: addPlantAction,
+  ping,
 }
 
 const connector = connect(null, mapDispatchToProps)
@@ -53,6 +54,15 @@ const AddPlantView = (props: Props) => {
           <Typography color="textPrimary">Lisää kasvi</Typography>
         </Button>
       </FormControl>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          props.ping()
+        }}
+      >
+        <Typography color="textPrimary">PING</Typography>
+      </Button>
     </Paper>
   )
 }
