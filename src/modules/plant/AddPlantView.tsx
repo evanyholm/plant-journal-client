@@ -11,11 +11,11 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { Editor } from 'react-draft-wysiwyg'
 import { convertToRaw, EditorState } from 'draft-js'
 import { connect, ConnectedProps } from 'react-redux'
-import { addPlant as addPlantAction, ping } from '../../store/plant/slice'
+import { addPlant, ping } from '../../store/plant/actions'
 import { Plant } from './types'
 
 const mapDispatchToProps = {
-  addPlant: addPlantAction,
+  addPlant,
   ping,
 }
 
