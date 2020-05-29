@@ -2,7 +2,10 @@ import { createReducer } from '@reduxjs/toolkit'
 import { Plant } from '../../modules/plant/types'
 import { ping, pong, receivePlant, receivePlants } from './actions'
 
-const plantState = { plants: [] as Plant[] }
+type PlantState = {
+  plants: Plant[]
+}
+const plantState: PlantState = { plants: [] }
 
 const plantReducer = createReducer(plantState, builder => {
   builder

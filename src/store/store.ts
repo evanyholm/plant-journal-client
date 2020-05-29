@@ -6,6 +6,8 @@ import { plantState } from './plant/reducer'
 
 const sagaMiddleWare = createSagaMiddleware()
 
+export type ReduxState = ReturnType<typeof reducer>
+
 const preloadedState: ReduxState = {
   plantState,
 }
@@ -16,7 +18,6 @@ const store = configureStore({
   preloadedState,
 })
 
-export type ReduxState = ReturnType<typeof reducer>
 
 sagaMiddleWare.run(startSagas)
 export { store }
