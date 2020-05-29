@@ -12,6 +12,7 @@ function* fetchPlants() {
     )
     yield put(receivePlants(plants))
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log(e)
   }
 }
@@ -22,13 +23,15 @@ function* addPlant(action: ReturnType<typeof plantActions.addPlant>) {
         .post<Plant>('api/plants', action.payload)
         .then(response => response.data)
     )
-    console.log(newPlant)
     yield put(receivePlant(newPlant))
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log(e)
   }
 }
-export const plantSagas = [
+const plantSagas = [
   takeLatest(getType(plantActions.fetchPlants), fetchPlants),
   takeLatest(getType(plantActions.addPlant), addPlant),
 ]
+
+export default plantSagas

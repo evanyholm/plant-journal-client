@@ -13,19 +13,19 @@ import Link from '@material-ui/core/Link'
 const TopBar = () => {
   const styles = useStyles()
   return (
-      <AppBar position="fixed" className={styles.topBar}>
-        <Toolbar>
-          <IconButton edge="start" aria-label="menu">
-            <MenuIcon color={'secondary'} />
-          </IconButton>
-          <Link className={styles.link} component={RouterLink} to={'/'}>
-            <Typography color={'textPrimary'}>Home</Typography>
-          </Link>
-          <Link className={styles.link} component={RouterLink} to={'/addPlant'}>
-            <Typography color={'textPrimary'}>Add Plant</Typography>
-          </Link>
-        </Toolbar>
-      </AppBar>
+    <AppBar position="fixed" className={styles.topBar}>
+      <Toolbar>
+        <IconButton edge="start" aria-label="menu">
+          <MenuIcon color="secondary" />
+        </IconButton>
+        <Link className={styles.link} component={RouterLink} to="/">
+          <Typography color="textPrimary">Home</Typography>
+        </Link>
+        <Link className={styles.link} component={RouterLink} to="/addPlant">
+          <Typography color="textPrimary">Add Plant</Typography>
+        </Link>
+      </Toolbar>
+    </AppBar>
   )
 }
 export default TopBar

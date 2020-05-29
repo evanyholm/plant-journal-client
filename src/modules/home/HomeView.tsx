@@ -1,20 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Plant } from '../plant/types'
-import { ReduxState } from '../../store/store'
 import { connect } from 'react-redux'
 import { List, ListItem, ListItemText, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { ReduxState } from '../../store/store'
+import { Plant } from '../plant/types'
 
 type StateProps = {
   plants: Plant[]
 }
 const HomeView = ({ plants }: StateProps) => {
-  const styles = useStyles()
   return (
     <div>
-      <Typography variant={'h2'}>Home</Typography>
-      <List component={'nav'}>
+      <Typography variant="h2">Home</Typography>
+      <List component="nav">
         {plants.map((plant: Plant) => (
           <ListItem
             key={plant.id}
@@ -36,10 +34,4 @@ const mapStateToProps = (state: ReduxState) => {
   }
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(3),
-    margin: theme.spacing(3, 0, 0, 0),
-  },
-}))
 export default connect(mapStateToProps)(HomeView)

@@ -9,19 +9,17 @@ import {
   ListItemText,
   makeStyles,
   Theme,
-  Typography,
-  useTheme,
 } from '@material-ui/core'
+import { connect } from 'react-redux'
 import { Plant } from '../plant/types'
 import { ReduxState } from '../../store/store'
-import { connect } from 'react-redux'
 
 type Props = ReturnType<typeof mapStateToProps>
 const drawerWidth = 240
 
 const drawer = (plants: Plant[]) => {
   return (
-    <List component={'nav'}>
+    <List component="nav">
       {plants.map((plant: Plant) => (
         <ListItem
           key={plant.id}
@@ -37,13 +35,7 @@ const drawer = (plants: Plant[]) => {
 }
 const SideNav = ({ plants }: Props) => {
   const classes = useStyles()
-  const theme = useTheme()
-  console.log(classes.drawer)
-  const [mobileOpen, setMobileOpen] = React.useState(false)
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
-  }
   return (
     <nav>
       <Hidden xsDown implementation="css">

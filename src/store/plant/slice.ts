@@ -5,18 +5,20 @@ export const plantState = createSlice({
   name: 'plant',
   initialState: { plants: [] as Plant[] },
   reducers: {
-    receivePlants: (state, action: PayloadAction<Plant[]>) => {
-      state.plants = action.payload
-    },
-    receivePlant: (state, action: PayloadAction<Plant>) => {
-      state.plants = [ ...state.plants, action.payload ]
-    },
+    receivePlants: (state, action: PayloadAction<Plant[]>) => ({
+      ...state,
+      plants: action.payload,
+    }),
+    receivePlant: (state, action: PayloadAction<Plant>) => ({
+      ...state,
+      plants: [...state.plants, action.payload],
+    }),
   },
 })
 
 const fetchPlants = createAction('plant/fetch_plants')
 const addPlant = createAction<Plant>('plant/add_plant')
-const receivePlants = plantState.actions.receivePlants
-const receivePlant = plantState.actions.receivePlant
+const { receivePlants } = plantState.actions
+const { receivePlant } = plantState.actions
 
 export { fetchPlants, receivePlants, receivePlant, addPlant }

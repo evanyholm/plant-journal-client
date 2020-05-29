@@ -1,15 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Container, CssBaseline, makeStyles } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 import HomeView from './modules/home/HomeView'
 import './index.scss'
-import { connect } from 'react-redux'
 import { fetchPlants } from './store/plant/slice'
 import { handleRouteParams } from './utlis/util'
 import PlantView from './modules/plant/PlantView'
 import TopBar from './modules/navigation/TopBar'
-import { ThemeProvider } from '@material-ui/core/styles'
-import { theme } from './muiTheme'
-import {Container, CssBaseline, Drawer, Hidden, makeStyles, Typography} from '@material-ui/core'
+import theme from './muiTheme'
 import AddPlantView from './modules/plant/AddPlantView'
 import SideNav from './modules/navigation/SideNav'
 
@@ -53,7 +53,7 @@ const mapDispatchToProps = {
 const useStyles = makeStyles(() => ({
   root: {
     flex: 1,
-    display: 'flex'
+    display: 'flex',
   },
   toolbar: theme.mixins.toolbar,
   content: {

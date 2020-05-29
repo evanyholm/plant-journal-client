@@ -1,7 +1,9 @@
-import { plantState } from './plant/slice'
 import { combineReducers } from 'redux'
+import { plantState } from './plant/slice'
 
 // exports from createSlices
-export const reducer = combineReducers({
+const reducer = combineReducers({
   plantState: plantState.reducer,
 })
+
+export default reducer

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import { reducer } from './rootReducer'
+import reducer from './rootReducer'
 import startSagas from './rootSaga'
 import { Plant } from '../modules/plant/types'
 
