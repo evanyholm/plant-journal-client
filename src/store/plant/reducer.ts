@@ -1,12 +1,12 @@
-import { createReducer, PayloadAction } from '@reduxjs/toolkit'
+import { createReducer } from '@reduxjs/toolkit'
 import { Plant } from '../../modules/plant/types'
 import { ping, pong, receivePlant, receivePlants } from './actions'
 
-const initialState = { plants: [] as Plant[] }
+const plantState = { plants: [] as Plant[] }
 
-const plantReducer = createReducer(initialState, builder => {
+const plantReducer = createReducer(plantState, builder => {
   builder
-    .addCase(receivePlants, (state, action: PayloadAction<Plant[]>) => ({
+    .addCase(receivePlants, (state, action) => ({
       ...state,
       plants: action.payload,
     }))
@@ -14,7 +14,7 @@ const plantReducer = createReducer(initialState, builder => {
       ...state,
       plants: [...state.plants, action.payload],
     }))
-    .addCase(ping, state => {
+    .addCase(ping, () => {
       console.log('ping')
     })
     .addCase(pong, (state, action) => {
@@ -22,4 +22,4 @@ const plantReducer = createReducer(initialState, builder => {
     })
 })
 
-export { plantReducer }
+export { plantReducer, plantState }
