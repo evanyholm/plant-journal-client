@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux'
-import { plantState } from './plant/slice'
+import { combineReducers } from '@reduxjs/toolkit'
+import { plantReducer } from './plant/reducer'
 
-// exports from createSlices
 const reducer = combineReducers({
-  plantState: plantState.reducer,
+  plantState: plantReducer,
 })
 
 export { reducer }
