@@ -12,6 +12,7 @@ import TopBar from './modules/navigation/TopBar'
 import theme from './muiTheme'
 import AddPlantView from './modules/plant/AddPlantView'
 import SideNav from './modules/navigation/SideNav'
+import * as plantActions from './store/plant/actions'
 
 type Props = typeof mapDispatchToProps
 const App = ({ fetchPlantsAction }: Props) => {
